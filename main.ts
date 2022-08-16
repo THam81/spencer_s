@@ -25,7 +25,7 @@ function displayColor () {
         strip.show()
     } else if (color == 2) {
         for (let index = 0; index <= strip.length(); index++) {
-            strip.setPixelColor(index, neopixel.colors(NeoPixelColors.Purple))
+            strip.setPixelColor(index, neopixel.colors(NeoPixelColors.Yellow))
             strip.show()
             basic.pause(speed)
         }
@@ -46,10 +46,11 @@ function displayColor () {
 let color = 0
 let speed = 0
 let strip: neopixel.Strip = null
-strip = neopixel.create(DigitalPin.P0, 8, NeoPixelMode.RGB)
+strip = neopixel.create(DigitalPin.P0, 11, NeoPixelMode.RGB_RGB)
 speed = 200
-color = 1
+color = 0
 basic.forever(function () {
+    strip.setBrightness(pins.analogReadPin(AnalogPin.P1) / 8)
     displayColor()
     basic.pause(5 * speed)
 })
