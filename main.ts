@@ -50,7 +50,7 @@ strip = neopixel.create(DigitalPin.P0, 11, NeoPixelMode.RGB_RGB)
 speed = 200
 color = 0
 basic.forever(function () {
-    strip.setBrightness(pins.analogReadPin(AnalogPin.P1) / 6 + 3)
+    strip.setBrightness(Math.map(pins.analogReadPin(AnalogPin.P1), 1, 1000, 1, 256))
     displayColor()
     basic.pause(5 * speed)
 })
